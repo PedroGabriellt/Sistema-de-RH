@@ -5,3 +5,8 @@ class Program {
     Console.WriteLine ("Hello World");
   }
 }
+
+class Gertor {
+
+  
+}
