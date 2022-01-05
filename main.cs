@@ -1,6 +1,15 @@
 using System;
 
-class Gertor {
+class Program {
+  public static void Main (string[] args) {
+    Gestor g1 = new Gestor(1,"Designer","Pedro");
+
+    Console.WriteLine(g1);
+  }
+}
+
+
+class Gestor {
 
   private int id;
   private string area;
@@ -12,22 +21,24 @@ class Gertor {
     this.nome = nome;
   }
 
+  public override string ToString(){
+    return id + " - " + nome + " - " + area;
+  }
+
 }
 
 class Solicitação{
 
   private int id;
   private string AreaDeAtuação;
-  private int Qfuncionarios;
   private string Turno;
   private string Resposta;
   private string Aprovados;
 
-  public Solicitação(int id, string AreaDeAtuação, int Qfuncionarios, string Turno, string Resposta, string Aprovados){
+  public Solicitação(int id, string AreaDeAtuação, string Turno, string Resposta, string Aprovados){
 
   this.id = id;
   this.AreaDeAtuação = AreaDeAtuação;
-  this.Qfuncionarios = Qfuncionarios > 0 ? Qfuncionarios : 0;
   this.Turno = Turno;
   this.Resposta = Resposta;
   this.Aprovados = Aprovados;
@@ -49,32 +60,22 @@ class FuncionarioDoRH {
  }
 }
 
-
-class Curricolo {
-  private int id;
-  private string Formacao;
-  private string Experiencia;
-
-  public Curricolo( int id, string Formacao, string Experiencia){
-    this.id = id;
-    this.Formacao = Formacao;
-    this.Experiencia = Experiencia;
-  }
-
-}
-
 class Candidato{
   private int id;
   private string Nome;
   private int idade;
   private string Telefone;
   private string Email;
+  private string Formacao;
+  private string Experiencia;
 
-  public Candidato(int id, string Nome, int idade, string Telefone, string Email){
+  public Candidato(int id, string Nome, int idade, string Telefone, string Email, string Formacao, string Experiencia){
     this.id = id;
     this.Nome = Nome;
     this.idade = idade;
     this.Telefone = Telefone;
     this.Email = Email;
+    this.Formacao = Formacao;
+    this.Experiencia = Experiencia;
   }
 }
