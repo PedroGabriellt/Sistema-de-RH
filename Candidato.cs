@@ -1,21 +1,3 @@
-using System;
-
-class Program {
-  public static void Main (string[] args) {
-    Gestor g1 = new Gestor(1,"Designer","Pedro");
-
-    Console.WriteLine(g1);
-  }
-}
-
-
-
-
-
-
-
-
-
 class Candidato{
   private int id;
   private string Nome;
