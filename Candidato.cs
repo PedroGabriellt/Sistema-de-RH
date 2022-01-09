@@ -75,6 +75,6 @@ class Candidato{
   }
 
   public override string ToString(){
-    return id + " - " + Nome + " - " + idade + " - " + Telefone + " - " + Email + " - " + Formacao + " - " + Experiencia;
+    return id + " - " + Nome + " - " + Email + " - " + Formacao + " - " + Experiencia;
   }
 }

@@ -3,16 +3,20 @@ class Solicitacao{
   private int id;
   private string AreaDeAtuacao;
   private string Turno;
-  private string Resposta;
-  private string Aprovado;
+  private Candidato[] aprovados = new Candidato[5];
+  private int cnt;
+  private Gestor Gestor;
 
-  public Solicitacao(int id, string AreaDeAtuacao, string Turno, string Resposta, string Aprovado){
+  private FuncionarioDoRH FuncionarioDoRH; 
+
+  public Solicitacao(int id, string AreaDeAtuacao, string Turno, Gestor Gestor, FuncionarioDoRH FuncionarioDoRH){
 
   this.id = id;
   this.AreaDeAtuacao = AreaDeAtuacao;
   this.Turno = Turno;
-  this.Resposta = Resposta;
-  this.Aprovado = Aprovado;
+  this.Gestor = Gestor;
+  
+  this.FuncionarioDoRH = FuncionarioDoRH;
   }
 
    public void SetId(int id){
@@ -27,12 +31,14 @@ class Solicitacao{
         this.Turno = Turno;
   }
 
-  public void SetResposta(string Resposta){
-        this.Resposta = Resposta;
+  public void SetGestor(Gestor Gestor){
+    this.Gestor = Gestor;
   }
 
-   public void SetAprovado(string Aprovado){
-        this.Aprovado = Aprovado;
+ 
+
+  public void SetFuncionarioDoRH(FuncionarioDoRH FuncionarioDoRH){
+      this.FuncionarioDoRH = FuncionarioDoRH;
   }
 
   public int GetId(){
@@ -47,16 +53,28 @@ class Solicitacao{
         return Turno;
   }
 
-  public string GetResposta(){
-        return Resposta;
+
+  public Gestor GetGestor(){
+    return Gestor;
   }
 
-  public string GetAprovado(){
-        return Aprovado;
+  
+
+  public FuncionarioDoRH GetFuncionarioDoRH(){
+      return FuncionarioDoRH;
   }
+
+public Candidato[] CandidatoListar(){
+  return aprovados;
+}
+
+public void CandidatoInserir(Candidato a){
+  aprovados[cnt] = a;
+  cnt++;
+}
 
 
   public override string ToString(){
-    return id + " - " + AreaDeAtuacao + " - " + Turno;
+    return id + " - Area de atuação: " + AreaDeAtuacao + " - Turno: " + Turno + " - Gestor: " + Gestor + "Responsavel do RH "+ FuncionarioDoRH + " - Quantidade de aprovados: " + cnt ;
   }
 }

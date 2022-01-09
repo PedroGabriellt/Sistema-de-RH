@@ -2,97 +2,80 @@ using System;
 
 class Program {
   public static void Main (string[] args) {
-    Gestor g1 = new Gestor(1,"Designer","Pedro");
+    int op = 0;
+    Console.WriteLine("----------Sistema de RH----------");
+    do{ 
+      try{
+    op = Menu();
+    switch(op){
+      case 1 : MenuGestor(); break;
+      case 2 : MenuRH(); break;
+      case 3: MenuCandidato(); break;
 
-    Console.WriteLine(g1);
+       }
+     }
+     catch(Exception erro){
+       Console.WriteLine(erro.Message);
+       op = 50;
+     }
+    } while (op!=0);
+    Console.WriteLine("Fim");
+
   }
-}
-
-
-
-
-
-
-
-
-
-class Candidato{
-  private int id;
-  private string Nome;
-  private int idade;
-  private string Telefone;
-  private string Email;
-  private string Formacao;
-  private string Experiencia;
-
-  public Candidato(int id, string Nome, int idade, string Telefone, string Email, string Formacao, string Experiencia){
-    this.id = id;
-    this.Nome = Nome;
-    this.idade = idade;
-    this.Telefone = Telefone;
-    this.Email = Email;
-    this.Formacao = Formacao;
-    this.Experiencia = Experiencia;
-  }
-
-  public void SetId(int id){
-        this.id = id;
+  public static int Menu(){
+    Console.WriteLine();
+    Console.WriteLine("|--------------------------------|");
+    Console.WriteLine("|1 - Gestor                      |");
+    Console.WriteLine("|2 - RH                          |");
+    Console.WriteLine("|3 - Candidato                   |");
+    Console.WriteLine("|0 - sair                        |");
+    Console.WriteLine("|--------------------------------|");
+    Console.WriteLine("Selecione uma opção: ");
+    int op = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    return op;
   }
 
-  public void SetNome(string Nome){
-        this.Nome = Nome;
+  public static int MenuGestor(){
+     Console.WriteLine("|---------Área do Gestor---------|");
+     Console.WriteLine();
+     Console.WriteLine("|--------------------------------|");
+     Console.WriteLine("|1 - Solicitar Funcionario       |");
+     Console.WriteLine("|2 - Resposta                    |");
+     Console.WriteLine("|0 - sair                        |");
+     Console.WriteLine("|--------------------------------|");
+     Console.WriteLine("Selecione uma opção: ");
+     int op2 = int.Parse(Console.ReadLine());
+     Console.WriteLine();
+    return op2;
   }
+  public static int MenuRH(){
+     Console.WriteLine("|----------Área do RH------------|");
+     Console.WriteLine();
+     Console.WriteLine("|--------------------------------|");
+     Console.WriteLine("|1 - Solicitações                |");
+     Console.WriteLine("|2 - Listar Candidatos           |");
+     Console.WriteLine("|3 - Responder                   |");
+     Console.WriteLine("|0 - sair                        |");
+     Console.WriteLine("|--------------------------------|");
+     Console.WriteLine("Selecione uma opção: ");
+     int op2 = int.Parse(Console.ReadLine());
+     Console.WriteLine();
+    return op2;
 
-  public void SetIdade(int idade){
-        this.idade = idade;
   }
+  public static int MenuCandidato(){
+     Console.WriteLine("|---------Área do Candidato------|");
+     Console.WriteLine();
+     Console.WriteLine("|--------------------------------|");
+     Console.WriteLine("|1 - Listar Dados                |");
+     Console.WriteLine("|2 - Atualizar Dados             |");
+     Console.WriteLine("|0 - sair                        |");
+     Console.WriteLine("|--------------------------------|");
+     Console.WriteLine("Selecione uma opção: ");
+     int op2 = int.Parse(Console.ReadLine());
+     Console.WriteLine();
+    return op2;
 
-  public void SetTelefone(string Telefone){
-        this.Telefone = Telefone;
-  }
-
-  public void SetEmail(string Email){
-        this.Email = Email;
-  }
-
-  public void SetFomacao(string Formacao){
-        this.Formacao = Formacao;
-  }
-
-  public void SetExperiencia(string Experiencia){
-        this.Experiencia = Experiencia;
-  }
-
-
-  public int GetId(){
-        return id;
-  }
-
-  public string GetNome(){
-        return Nome;
-  }
-
-  public int GetIdade(){
-        return idade;
-  }
-
-  public string GetTelefone(){
-        return Telefone;
-  }
-
-  public string GetEmail(){
-        return Email;
-  }
-
-  public string GetFormacao(){
-        return Formacao;
-  }
-
-  public string GetExperiencia(){
-        return Experiencia;
-  }
-
-  public override string ToString(){
-    return id + " - " + Nome + " - " + idade + " - " + Telefone + " - " + Email + " - " + Formacao + " - " + Experiencia;
   }
 }
