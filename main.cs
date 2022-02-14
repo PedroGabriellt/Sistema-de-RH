@@ -11,7 +11,7 @@ class Program {
     int op3 = 0;
     int op4 = 0;
     
-    Menu():
+    Menu();
 
   }
   public static void Menu(){
@@ -140,7 +140,8 @@ class Program {
      Console.WriteLine("|1 - Exibir Vagas                |");
      Console.WriteLine("|2 - Candidatar-se               |");
      Console.WriteLine("|3 - Ver Candidatos              |");
-     Console.WriteLine("|4 - Voltar                      |");
+     Console.WriteLine("|4 - Lista de aprovados          |");
+     Console.WriteLine("|5 - Voltar                      |");
      Console.WriteLine("|--------------------------------|");
      Console.WriteLine("Selecione uma opção: ");
      int op4 = int.Parse(Console.ReadLine());
@@ -152,6 +153,7 @@ class Program {
       case 1 : Vvagas(); break;
       case 2 : Candidatar(); break;
       case 3: Vcandidatos(); break;
+      case 4: Vresposta(); break;
     
 
        }
@@ -160,7 +162,7 @@ class Program {
        Console.WriteLine(erro.Message);
        op4 = 50;
      }
-     if(op4==4){
+     if(op4==5){
        Console.WriteLine("Voltar");
      } else{
       MenuCandidato();
