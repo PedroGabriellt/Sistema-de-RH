@@ -4,13 +4,14 @@ class Program {
   private static nCandidatos  ncandidatos = new nCandidatos();
   private static nSolicitacao  nsolicitacao = new nSolicitacao();
   private static nResposta  nresposta = new nResposta();
+  private static nVagas nvagas = new nVagas();
   public static void Main (string[] args) {
     int op = 0;
     int op2 = 0;
     int op3 = 0;
     int op4 = 0;
     
-    Menu();
+    Menu():
 
   }
   public static void Menu(){
@@ -32,7 +33,8 @@ class Program {
       
       case 1 : MenuGestor(); break;
       case 2 : MenuRH(); break;
-      case 3: MenuCandidato(); break; 
+      case 3: MenuCandidato(); break;
+     
 
        }
      }
@@ -41,7 +43,8 @@ class Program {
        op = 50;
      }
      if(op==0){
-       Console.WriteLine("Até mais!");
+       Saida(); 
+       
      } else{
       Menu();
       }
@@ -56,8 +59,9 @@ class Program {
      Console.WriteLine();
      Console.WriteLine("|--------------------------------|");
      Console.WriteLine("|1 - Solicitar Funcionario       |");
-     Console.WriteLine("|2 - Resposta                    |");
-     Console.WriteLine("|3 - Voltar                      |");
+     Console.WriteLine("|2 - solicitações                |");
+     Console.WriteLine("|3 - Respostas                   |");
+     Console.WriteLine("|4 - Voltar                      |");
      Console.WriteLine("|--------------------------------|");
      Console.WriteLine("Selecione uma opção: ");
      int op2 = int.Parse(Console.ReadLine());
@@ -66,7 +70,8 @@ class Program {
       try{
     switch(op2){
       case 1 : AbrirS(); break;
-      case 2 : Vresposta(); break;
+      case 2 : Vsolicitacoes(); break;
+      case 3 : Vresposta(); break;
       
 
        }
@@ -76,7 +81,7 @@ class Program {
        op2 = 50;
      }
      
-     if(op2==3){
+     if(op2==4){
        Console.WriteLine("Voltar");
      } else{
       MenuGestor();
@@ -90,7 +95,10 @@ class Program {
      Console.WriteLine("|1 - Solicitações                |");
      Console.WriteLine("|2 - Listar Candidatos           |");
      Console.WriteLine("|3 - Responder                   |");
-     Console.WriteLine("|4 - Voltar                      |");
+     Console.WriteLine("|4 - Respostas                   |");
+     Console.WriteLine("|5 - Abrir Vagas                 |");
+     Console.WriteLine("|6 - Exibir Vagas                |");
+     Console.WriteLine("|7 - Voltar                      |");
      Console.WriteLine("|--------------------------------|");
      Console.WriteLine("Selecione uma opção: ");
      int op3 = int.Parse(Console.ReadLine());
@@ -103,6 +111,9 @@ class Program {
       case 1 : Vsolicitacoes(); break;
       case 2 : Vcandidatos(); break;
       case 3: responder(); break;
+      case 4: Vresposta();break;
+      case 5:AbrirV();break;
+      case 6: Vvagas(); break;
       
 
        }
@@ -111,7 +122,7 @@ class Program {
        Console.WriteLine(erro.Message);
        op3 = 50;
      }
-     if(op3==4){
+     if(op3==7){
        Console.WriteLine("Voltar");
      } else{
       MenuRH();
@@ -126,9 +137,10 @@ class Program {
      Console.WriteLine("|---------Área do Candidato------|");
      Console.WriteLine();
      Console.WriteLine("|--------------------------------|");
-     Console.WriteLine("|1 - Candidatar-se               |");
-     Console.WriteLine("|2 - Ver Candidatos              |");
-     Console.WriteLine("|3 - Voltar                      |");
+     Console.WriteLine("|1 - Exibir Vagas                |");
+     Console.WriteLine("|2 - Candidatar-se               |");
+     Console.WriteLine("|3 - Ver Candidatos              |");
+     Console.WriteLine("|4 - Voltar                      |");
      Console.WriteLine("|--------------------------------|");
      Console.WriteLine("Selecione uma opção: ");
      int op4 = int.Parse(Console.ReadLine());
@@ -137,9 +149,9 @@ class Program {
       try{
 
     switch(op4){
-      case 1 : Candidatar(); break;
-      case 2 : Vcandidatos(); break;
-      case 3: Menu(); break;
+      case 1 : Vvagas(); break;
+      case 2 : Candidatar(); break;
+      case 3: Vcandidatos(); break;
     
 
        }
@@ -148,7 +160,7 @@ class Program {
        Console.WriteLine(erro.Message);
        op4 = 50;
      }
-     if(op4==3){
+     if(op4==4){
        Console.WriteLine("Voltar");
      } else{
       MenuCandidato();
@@ -232,7 +244,11 @@ public static void AbrirS(){
   string Gestor = Console.ReadLine();
   Console.WriteLine();
 
-  Solicitacao sa = new Solicitacao(id, AreaDeAtuacao, Turno, Gestor);
+  Console.WriteLine("Informe a quantidade de funcionarios que deseja:");
+  int quvagas = int.Parse(Console.ReadLine());
+  Console.WriteLine();
+
+  Solicitacao sa = new Solicitacao(id, AreaDeAtuacao, Turno, Gestor,quvagas);
 
   nsolicitacao.Inserir(sa);
 
@@ -313,6 +329,54 @@ public static void Vresposta(){
   Console.WriteLine(); 
   Menu();
 
+}
+
+public static void AbrirV(){
+  Console.WriteLine("|--------- Abrir Vagas ------|");
+  
+  Console.WriteLine("Informe um ID:");
+  int idv = int.Parse(Console.ReadLine());
+  Console.WriteLine();
+
+  Console.WriteLine("Informe a área desejada:");
+  string Atuacao = Console.ReadLine();
+  Console.WriteLine();
+
+  Console.WriteLine("Informe o turno:");
+  string Turno = Console.ReadLine();
+  Console.WriteLine();
+
+  Console.WriteLine("Informe a quantidade de Vagas:");
+  int qvagas = int.Parse(Console.ReadLine());
+  Console.WriteLine();
+
+
+  Vagas va = new Vagas(idv, Atuacao, Turno, qvagas);
+
+  nvagas.Inserir(va);
+
+  Menu();
+
+  
+}
+
+public static void Vvagas(){
+  Console.WriteLine("|--------- Vagas ------|");
+  Vagas[] vs = nvagas.Listar();
+  if(vs.Length == 0){
+    Console.WriteLine("Sem respostas hoje");
+    return;
+    Menu();
+    
+  }
+  foreach( Vagas v in vs) Console.WriteLine(v);
+  Console.WriteLine(); 
+  Menu();
+
+}
+
+public static void Saida(){
+  Console.WriteLine("Até mais!");
 }
 
 }

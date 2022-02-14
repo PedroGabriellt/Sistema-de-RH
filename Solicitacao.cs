@@ -6,14 +6,16 @@ class Solicitacao{
   private Resposta[] resposta = new Resposta[5];
   private int cnt;
   private string Gestor;
+  private int qvagas;
 
 
-  public Solicitacao(int id, string AreaDeAtuacao, string Turno, string Gestor){
+  public Solicitacao(int id, string AreaDeAtuacao, string Turno, string Gestor, int qvagas){
 
   this.id = id;
   this.AreaDeAtuacao = AreaDeAtuacao;
   this.Turno = Turno;
   this.Gestor = Gestor;
+  this.qvagas = qvagas;
   
   
   
@@ -62,6 +64,14 @@ public Resposta[] RespostaListar(){
   return resposta;
 }
 
+public void SetQvagas(int qvagas){
+        this.qvagas = qvagas;
+  }
+
+public int GetQvagas(){
+        return qvagas;
+  }
+
 
 public void RespostaIserir(Resposta r){
   resposta[cnt] = r;
@@ -70,6 +80,6 @@ public void RespostaIserir(Resposta r){
 
 
   public override string ToString(){
-    return id + " - Area de atuação: " + AreaDeAtuacao + " - Turno: " + Turno + " - Gestor: " + Gestor;
+    return id + " - Area de atuação: " + AreaDeAtuacao + " - Turno: " + Turno + " - Gestor: " + Gestor +" - Quantidade de Vagas" + qvagas;
   }
 }
