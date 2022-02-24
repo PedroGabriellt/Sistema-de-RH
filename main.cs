@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 
 class Program {
   private static nCandidatos  ncandidatos = new nCandidatos();
@@ -34,7 +36,7 @@ class Program {
       case 1 : MenuGestor(); break;
       case 2 : MenuRH(); break;
       case 3: MenuCandidato(); break;
-     
+      case 0: Saida(); break;
 
        }
      }
@@ -42,12 +44,6 @@ class Program {
        Console.WriteLine(erro.Message);Menu();
        op = 50;
      }
-     if(op==0){
-       Saida(); 
-       
-     } else{
-      Menu();
-      }
 
     
       
@@ -72,7 +68,7 @@ class Program {
       case 1 : AbrirS(); break;
       case 2 : Vsolicitacoes(); break;
       case 3 : Vresposta(); break;
-      
+      case 4 : Menu(); break;
 
        }
      }
@@ -81,11 +77,7 @@ class Program {
        op2 = 50;
      }
      
-     if(op2==4){
-       Console.WriteLine("Voltar");
-     } else{
-      MenuGestor();
-      }
+    
   
   }
   public static void MenuRH(){
@@ -114,6 +106,7 @@ class Program {
       case 4: Vresposta();break;
       case 5:AbrirV();break;
       case 6: Vvagas(); break;
+      case 7 : Menu(); break;
       
 
        }
@@ -122,11 +115,6 @@ class Program {
        Console.WriteLine(erro.Message);
        op3 = 50;
      }
-     if(op3==7){
-       Console.WriteLine("Voltar");
-     } else{
-      MenuRH();
-      }
 
 
      
@@ -154,6 +142,7 @@ class Program {
       case 2 : Candidatar(); break;
       case 3: Vcandidatos(); break;
       case 4: Vresposta(); break;
+      case 5 : Menu(); break;
     
 
        }
@@ -162,11 +151,7 @@ class Program {
        Console.WriteLine(erro.Message);
        op4 = 50;
      }
-     if(op4==5){
-       Console.WriteLine("Voltar");
-     } else{
-      MenuCandidato();
-      }
+  
 
     
 
@@ -174,9 +159,6 @@ class Program {
 
 public static void Candidatar(){
   Console.WriteLine("|--------- Candidatar-se ------|");
-  Console.WriteLine("Informe um ID:");
-  int id = int.Parse(Console.ReadLine());
-  Console.WriteLine();
 
   Console.WriteLine("Informe seu nome:");
   string Nome = Console.ReadLine();
@@ -202,7 +184,7 @@ public static void Candidatar(){
   string Experiencia = Console.ReadLine();
   Console.WriteLine();
 
-  Candidato ca = new Candidato(id, Nome, idade, Telefone, Email, Formacao, Experiencia);
+  Candidato ca = new Candidato{Nome = Nome, idade = idade, Telefone = Telefone, Email = Email, Formacao = Formacao, Experiencia = Experiencia};
 
   ncandidatos.Inserir(ca);
 
@@ -214,10 +196,10 @@ public static void Candidatar(){
 
 public static void Vcandidatos(){
   Console.WriteLine("|--------- Candidatos ------|");
-  Candidato[] cs = ncandidatos.Listar();
-  if(cs.Length == 0){
+  List<Candidato> cs = ncandidatos.Listar();
+  if(cs.Count == 0){
     Console.WriteLine("Sem candidatos hoje");
-    Menu();
+    return;
   }
   foreach( Candidato c in cs) Console.WriteLine(c);
   Console.WriteLine();
@@ -230,9 +212,7 @@ public static void Vcandidatos(){
 
 public static void AbrirS(){
   Console.WriteLine("|--------- Abrir Solicitacao ------|");
-  Console.WriteLine("Informe um ID:");
-  int id = int.Parse(Console.ReadLine());
-  Console.WriteLine();
+  
 
   Console.WriteLine("Informe a área desejada:");
   string AreaDeAtuacao = Console.ReadLine();
@@ -250,7 +230,7 @@ public static void AbrirS(){
   int quvagas = int.Parse(Console.ReadLine());
   Console.WriteLine();
 
-  Solicitacao sa = new Solicitacao(id, AreaDeAtuacao, Turno, Gestor,quvagas);
+  Solicitacao sa = new Solicitacao{ AreaDeAtuacao = AreaDeAtuacao, Turno = Turno, Gestor = Gestor ,qvagas = quvagas};
 
   nsolicitacao.Inserir(sa);
 
@@ -261,12 +241,11 @@ public static void AbrirS(){
 
 public static void Vsolicitacoes(){
   Console.WriteLine("|--------- Solicitações ------|");
-  Solicitacao[] ss = nsolicitacao.Listar();
-  if(ss.Length == 0){
+  List<Solicitacao> ss = nsolicitacao.Listar();
+  if(ss.Count == 0){
     Console.WriteLine("Sem solicitações hoje");
     return;
-    Menu();
-    
+  
   }
   foreach( Solicitacao s in ss) Console.WriteLine(s);
   Console.WriteLine(); 
@@ -277,14 +256,8 @@ public static void Vsolicitacoes(){
 public static void responder(){
   Console.WriteLine("|--------- Responder ------|");
 
- 
-  
 
-  Console.WriteLine("Informe o ID da resposta:");
-  int idr = int.Parse(Console.ReadLine());
-  Console.WriteLine();
-
-  Solicitacao[] ss = nsolicitacao.Listar();
+  List<Solicitacao> ss = nsolicitacao.Listar();
   foreach( Solicitacao s in ss) Console.WriteLine(s);
   Console.WriteLine();
 
@@ -296,10 +269,9 @@ public static void responder(){
   string Gestor = Console.ReadLine();
   Console.WriteLine();
 
-  Candidato[] cs = ncandidatos.Listar();
+  List<Candidato> cs = ncandidatos.Listar();
   foreach( Candidato c in cs) Console.WriteLine(c);
   Console.WriteLine();
-
   Console.WriteLine("Informe o ID do candidato:");
   int idc = int.Parse(Console.ReadLine());
   Console.WriteLine();
@@ -309,7 +281,7 @@ public static void responder(){
   string Nome = Console.ReadLine();
   Console.WriteLine();
 
-  Resposta ra = new Resposta(idr, ids, idc, Gestor, Nome);
+  Resposta ra = new Resposta{ ids = ids, idc = idc, Gestor = Gestor, Nome = Nome};
 
   nresposta.Inserir(ra);
 
@@ -320,11 +292,11 @@ public static void responder(){
 
 public static void Vresposta(){
   Console.WriteLine("|--------- Respostas ------|");
-  Resposta[] rs = nresposta.Listar();
-  if(rs.Length == 0){
+  List<Resposta> rs = nresposta.Listar();
+  if(rs.Count == 0){
     Console.WriteLine("Sem respostas hoje");
     return;
-    Menu();
+    
     
   }
   foreach( Resposta r in rs) Console.WriteLine(r);
@@ -336,9 +308,6 @@ public static void Vresposta(){
 public static void AbrirV(){
   Console.WriteLine("|--------- Abrir Vagas ------|");
   
-  Console.WriteLine("Informe um ID:");
-  int idv = int.Parse(Console.ReadLine());
-  Console.WriteLine();
 
   Console.WriteLine("Informe a área desejada:");
   string Atuacao = Console.ReadLine();
@@ -353,7 +322,7 @@ public static void AbrirV(){
   Console.WriteLine();
 
 
-  Vagas va = new Vagas(idv, Atuacao, Turno, qvagas);
+  Vagas va = new Vagas{ Atuacao = Atuacao, Turno = Turno, qvagas = qvagas};
 
   nvagas.Inserir(va);
 
@@ -364,8 +333,8 @@ public static void AbrirV(){
 
 public static void Vvagas(){
   Console.WriteLine("|--------- Vagas ------|");
-  Vagas[] vs = nvagas.Listar();
-  if(vs.Length == 0){
+  List<Vagas> vs = nvagas.Listar();
+  if(vs.Count == 0){
     Console.WriteLine("Sem respostas hoje");
     return;
     Menu();
@@ -376,6 +345,7 @@ public static void Vvagas(){
   Menu();
 
 }
+
 
 public static void Saida(){
   Console.WriteLine("Até mais!");
