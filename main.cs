@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Text;
+using System.IO;
+
 
 
 class Program {
@@ -8,6 +12,12 @@ class Program {
   private static nResposta  nresposta = new nResposta();
   private static nVagas nvagas = new nVagas();
   public static void Main (string[] args) {
+
+    try {
+      nsolicitacao.abrir();
+    } catch(Exception erro){
+      
+    }
     int op = 0;
     int op2 = 0;
     int op3 = 0;
@@ -68,7 +78,7 @@ class Program {
       case 1 : AbrirS(); break;
       case 2 : Vsolicitacoes(); break;
       case 3 : Vresposta(); break;
-      case 4 : Menu(); break;
+      case 4 :  Menu(); break;
 
        }
      }
@@ -347,8 +357,15 @@ public static void Vvagas(){
 }
 
 
+
 public static void Saida(){
   Console.WriteLine("Até mais!");
+
+try {
+      nsolicitacao.salvar();
+    } catch(Exception erro){
+     
+    }
 }
 
 }

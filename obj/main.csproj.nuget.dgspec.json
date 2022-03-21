@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/runner/StripedBulkySorting/main.csproj": {}
+    "/home/runner/Sistema-de-RH-2/main.csproj": {}
   },
   "projects": {
-    "/home/runner/StripedBulkySorting/main.csproj": {
+    "/home/runner/Sistema-de-RH-2/main.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/runner/StripedBulkySorting/main.csproj",
+        "projectUniqueName": "/home/runner/Sistema-de-RH-2/main.csproj",
         "projectName": "main",
-        "projectPath": "/home/runner/StripedBulkySorting/main.csproj",
+        "projectPath": "/home/runner/Sistema-de-RH-2/main.csproj",
         "packagesPath": "/home/runner/.nuget/packages/",
-        "outputPath": "/home/runner/StripedBulkySorting/obj/",
+        "outputPath": "/home/runner/Sistema-de-RH-2/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/runner/.nuget/NuGet/NuGet.Config"

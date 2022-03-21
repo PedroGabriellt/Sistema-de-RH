@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Text;
+using System.IO;
 
 class nSolicitacao{
   private List<Solicitacao> solitacoes = new List<Solicitacao>();
@@ -21,10 +24,19 @@ class nSolicitacao{
     
   }
 
-  public void Excluir(Solicitacao s){
-    if(s != null){
-      solitacoes.Remove(s);
-    }
+  public void abrir(){
+    XmlSerializer xml = new XmlSerializer(typeof(List<Solicitacao>));
+    StreamReader f = new StreamReader("./Solicitações.xml", Encoding.Default);
+    solitacoes = (List<Solicitacao>) xml.Deserialize(f);
+    f.Close();
+    
   }
 
+  public void salvar(){
+    XmlSerializer xml = new XmlSerializer(typeof(List<Solicitacao>));
+    StreamWriter f = new StreamWriter("./Solicitações.xml", false, Encoding.Default);
+    xml.Serialize(f, Listar());
+    f.Close();
+    
+  }
 }

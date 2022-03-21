@@ -1,4 +1,4 @@
-class Solicitacao{
+public class Solicitacao{
 
   public int id {get; set;}
   public string AreaDeAtuacao {get; set;}
@@ -6,7 +6,6 @@ class Solicitacao{
   public int cnt {get; set;}
   public string Gestor {get; set;}
   public int qvagas {get; set;}
-
 
 
   public override string ToString(){

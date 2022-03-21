@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSolicitacao xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Solicitacao>
+    <id>1</id>
+    <AreaDeAtuacao>Design</AreaDeAtuacao>
+    <Turno>manhã</Turno>
+    <cnt>0</cnt>
+    <Gestor>pedro</Gestor>
+    <qvagas>5</qvagas>
+  </Solicitacao>
+</ArrayOfSolicitacao>
