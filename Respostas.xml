@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfResposta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Resposta>
+    <idr>1</idr>
+    <ids>1</ids>
+    <idc>1</idc>
+    <Gestor>Pedro</Gestor>
+    <Nome>Gabriel</Nome>
+  </Resposta>
+</ArrayOfResposta>

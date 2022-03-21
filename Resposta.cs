@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Resposta {
+public class Resposta {
   
   public int idr {get; set;}
   public int ids {get; set;}

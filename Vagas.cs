@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Vagas{
+public class Vagas{
 
 public int idv {get; set;}
 public string Atuacao {get; set;}

@@ -15,9 +15,17 @@ class Program {
 
     try {
       nsolicitacao.abrir();
+      nresposta.abrir();
+      ncandidatos.abrir();
+      nvagas.abrir();
     } catch(Exception erro){
       
     }
+
+      
+    
+
+  
     int op = 0;
     int op2 = 0;
     int op3 = 0;
@@ -305,7 +313,7 @@ public static void Vresposta(){
   List<Resposta> rs = nresposta.Listar();
   if(rs.Count == 0){
     Console.WriteLine("Sem respostas hoje");
-    return;
+    Menu();
     
     
   }
@@ -363,6 +371,9 @@ public static void Saida(){
 
 try {
       nsolicitacao.salvar();
+      nresposta.salvar();
+      ncandidatos.salvar();
+      nvagas.salvar();
     } catch(Exception erro){
      
     }

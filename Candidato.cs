@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Candidato{
+public class Candidato{
   public int id {get; set;}
   public string Nome {get; set;}
   public int idade {get; set;}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCandidato xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Candidato>
+    <id>1</id>
+    <Nome>Gabriel</Nome>
+    <idade>21</idade>
+    <Telefone>84 996923341</Telefone>
+    <Email>email@gmail.com</Email>
+    <Formacao>Tec. Info.</Formacao>
+    <Experiencia>4 anos</Experiencia>
+  </Candidato>
+</ArrayOfCandidato>
