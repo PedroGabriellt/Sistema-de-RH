@@ -217,7 +217,7 @@ public static void Vcandidatos(){
   List<Candidato> cs = ncandidatos.Listar();
   if(cs.Count == 0){
     Console.WriteLine("Sem candidatos hoje");
-    return;
+    Menu();
   }
   foreach( Candidato c in cs) Console.WriteLine(c);
   Console.WriteLine();
@@ -262,7 +262,7 @@ public static void Vsolicitacoes(){
   List<Solicitacao> ss = nsolicitacao.Listar();
   if(ss.Count == 0){
     Console.WriteLine("Sem solicitações hoje");
-    return;
+    Menu();
   
   }
   foreach( Solicitacao s in ss) Console.WriteLine(s);
@@ -354,7 +354,6 @@ public static void Vvagas(){
   List<Vagas> vs = nvagas.Listar();
   if(vs.Count == 0){
     Console.WriteLine("Sem respostas hoje");
-    return;
     Menu();
     
   }
